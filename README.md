@@ -2,7 +2,7 @@
 
 A small website made with **HTML and CSS only**. Everything needed for the page is in `index.html`. No installation, JavaScript, frameworks, or build step is needed.
 
-The introduction and interests are a suggested first draft based on Joel's creative interests. Edit any text that does not feel right. No photo, email address, school, or location is included.
+Joel introduces himself as a software developer and game designer, and a current master's student at KIC. The other interests are a suggested draft based on his creative interests; edit any text that does not feel right. No photo, email address, or location is included.
 
 ## 1. Open GitHub Codespaces
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2e9">
-  <meta name="description" content="Meet Joel Assiakwa — software developer, game designer, and master&#39;s student at KIC.">
+  <meta name="description" content="Joel Assiakwa — software development, Machine Learning &amp; AI, and game design. Master's student at KIC. Play Headwind, a browser game controlled with your head.">
   <title>Joel Assiakwa — Software Developer &amp; Game Designer</title>
   <style>
     /* Change these colors to make the page your own. */
@@ -66,6 +66,78 @@
     .footer { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 25px 35px; font-size: 11px; color: var(--muted); }
     .footer p { margin: 0; }
     .footer a { color: var(--ink); }
+    .role { font-weight: 600; color: var(--ink); }
+    .core-label { display: block; margin-top: 8px; color: var(--red); font-size: 9px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+    .interests .core { padding-block: 24px; }
+    .interests .core:first-child { padding-top: 0; }
+    .core h3 { font-size: 22px; letter-spacing: -.025em; }
+    .core .interest-number { font-size: 18px; }
+    .projects-section { border-top: 1px solid var(--line); padding-block: 45px 65px; }
+    .projects-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 30px; }
+    .projects-heading h2 { font-size: clamp(34px, 4vw, 48px); }
+    .projects-heading > p { margin: 0 0 4px; font-size: 12px; color: var(--muted); max-width: 210px; }
+    .project { background: var(--green); color: var(--paper); }
+    .project-bar { display: flex; justify-content: space-between; gap: 20px; padding: 20px 30px; border-bottom: 1px solid #65705f; font-size: 10px; letter-spacing: .1em; }
+    .project-bar span:last-child { color: #d2d8c8; }
+    .project-main { display: grid; grid-template-columns: .95fr 1.15fr; }
+    .project-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 36px 30px 34px; }
+    .project-name { margin: 0 0 18px; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: #e6c59e; }
+    .project h3 { font-family: var(--serif); font-size: clamp(36px, 4.1vw, 52px); line-height: 1.12; font-weight: 400; letter-spacing: -.04em; margin-bottom: 22px; }
+    .project-description { margin: 0; max-width: 350px; font-size: 14px; line-height: 1.8; color: #e0e4d9; }
+    .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
+    .play-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 52px; padding: 13px 19px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
+    .play-link:hover { background: #e6c59e; }
+    .play-link span { font-size: 21px; font-weight: 400; }
+    .code-link { font-size: 12px; color: var(--paper); padding-block: 10px; }
+    .project-hint { font-size: 10px; color: #c9d1c2; margin: 12px 0 0; }
+    .project-visual { margin: 0; align-self: stretch; display: flex; flex-direction: column; background: #d5e8dd; min-width: 0; }
+    .project-visual a { display: block; flex: 1; overflow: hidden; position: relative; }
+    .project-visual img { display: block; width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; min-height: 390px; transition: transform .6s ease; }
+    .project-visual a:hover img { transform: scale(1.025); }
+    .project-visual figcaption { padding: 9px 16px; background: #e8eee3; color: #4c5b4a; font-size: 9px; letter-spacing: .04em; }
+    .flight-controls { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; border-top: 1px solid #65705f; }
+    .flight-controls li { display: flex; align-items: center; gap: 17px; padding: 24px 30px; border-right: 1px solid #65705f; }
+    .flight-controls li:last-child { border-right: 0; }
+    .flight-arrow { color: #e6c59e; font-family: var(--serif); font-size: 36px; line-height: 1; }
+    .flight-controls strong { display: block; font-size: 14px; font-weight: 500; }
+    .flight-controls small { display: block; color: #d1d8c9; font-size: 11px; margin-top: 2px; }
+    .project-details { border-top: 1px solid var(--line); margin-top: 16px; border-bottom: 1px solid var(--line); }
+    .project-details summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; font-size: 12px; font-weight: 600; }
+    .project-details summary::-webkit-details-marker { display: none; }
+    .project-details summary::after { content: "+"; color: var(--red); font-size: 20px; line-height: 1; }
+    .project-details[open] summary::after { content: "−"; }
+    .project-details summary:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; padding: 4px 0 27px; font-size: 13px; color: var(--muted); }
+    .details-grid h4 { color: var(--ink); font-size: 14px; font-weight: 600; margin: 0 0 12px; }
+    .details-grid ol { margin: 0; padding-left: 20px; }
+    .details-grid li { padding: 3px 0 5px 4px; }
+    .details-grid p { margin: 0 0 12px; }
+    .tech-list { display: flex; gap: 7px; flex-wrap: wrap; margin: 16px 0 0; padding: 0; list-style: none; }
+    .tech-list li { padding: 3px 9px; border: 1px solid var(--line); font-size: 10px; color: var(--ink); }
+    @media (max-width: 950px) {
+      .project-main { grid-template-columns: 1fr 1fr; }
+      .project-copy { padding: 28px 24px; }
+      .project-visual img { min-height: 380px; }
+      .flight-controls li { padding: 22px; gap: 12px; }
+    }
+    @media (max-width: 700px) {
+      .project-main { grid-template-columns: 1fr; }
+      .project-copy { padding: 25px; grid-row: 2; }
+      .project-visual { grid-row: 1; }
+      .project h3 { font-size: clamp(30px, 9.2vw, 38px); }
+      .project-name { font-size: 10px; margin-bottom: 14px; }
+      .project-description { max-width: 440px; }
+      .project-visual img { min-height: 0; height: auto; aspect-ratio: 3 / 2; }
+      .projects-heading { display: block; }
+      .projects-heading > p { margin-top: 14px; max-width: none; }
+      .flight-controls li { flex-direction: column; align-items: flex-start; gap: 12px; padding: 19px 14px; }
+      .flight-controls strong { font-size: 12px; }
+      .flight-controls small { font-size: 10px; }
+      .flight-arrow { font-size: 30px; }
+      .project-bar { padding: 18px 24px; font-size: 9px; }
+      .details-grid { grid-template-columns: 1fr; gap: 22px; }
+      .projects-section { padding-block: 34px 42px; }
+    }
     /* Optional photo: add the image described in README.md. */
     .profile-photo { width: 88px; height: 88px; object-fit: cover; border-radius: 50%; margin-top: 24px; }
     @media (min-width: 1400px) { .hero { padding-top: 88px; } }
@@ -99,7 +171,8 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .button { transition: none; }
+      .button, .play-link, .project-visual img { transition: none; }
+      .project-visual a:hover img { transform: none; }
     }
   </style>
 </head>
@@ -113,7 +186,8 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#interests">Interests</a>
+        <a href="#interests">Skills</a>
+        <a href="#projects">Projects</a>
       </nav>
     </header>
 
@@ -124,8 +198,8 @@
           <!-- Edit your name and introduction here. -->
           <h1 id="hello">Hello,<br>I'm <span>Joel.</span></h1>
           <p class="full-name">Joel Assiakwa</p>
-          <p class="intro">Software developer &amp; game designer.<br>Currently a master&#39;s student at KIC.</p>
-          <a class="button" href="#about">Get to know me <span aria-hidden="true">↘</span></a>
+          <p class="intro"><span class="role">Software developer &amp; game designer.</span><br>Machine Learning &amp; AI.<br>Currently a master&#39;s student at KIC.</p>
+          <a class="button" href="#projects">See my projects <span aria-hidden="true">↘</span></a>
         </div>
 
         <aside class="note" aria-label="Create. Learn. Enjoy.">
@@ -146,34 +220,96 @@
         <div>
           <!-- This is a first draft based on your interests. Change it anytime. -->
           <p class="about-copy">I'm Joel Assiakwa, but you can call me Joel. I'm currently a master's student at KIC. I enjoy exploring how creative ideas become something you can see, play, or use.</p>
-          <p>My interests bring together software development, game design, visual storytelling, and learning new tools. I like thoughtful design and the small details that make an experience feel good.</p>
+          <p>Software development and Machine Learning &amp; AI are my core competencies. I bring these together with game design and visual storytelling to turn ideas into useful, playful experiences.</p>
         </div>
       </section>
 
       <section class="section" id="interests" aria-labelledby="interests-title">
         <div>
-          <p class="section-label"><span>02</span>My interests</p>
-          <h2 id="interests-title">Things I explore.</h2>
+          <p class="section-label"><span>02</span>Skills &amp; interests</p>
+          <h2 id="interests-title">What I do.</h2>
         </div>
         <!-- Add or change your hobbies in this list. -->
         <ul class="interests">
-          <li>
+          <li class="core">
             <span class="interest-number" aria-hidden="true">01</span>
-            <div><h3>Software development</h3><p>Building useful applications, solving problems, and turning ideas into working software.</p></div>
+            <div><h3>Software Development</h3><p>I turn ideas into useful applications and solve problems with code.</p><span class="core-label">Core competency</span></div>
           </li>
-          <li>
+          <li class="core">
             <span class="interest-number" aria-hidden="true">02</span>
-            <div><h3>Game design &amp; development</h3><p>Exploring ideas, controls, and the details that make a game enjoyable to play.</p></div>
+            <div><h3>Machine Learning &amp; AI</h3><p>I work with trained models that recognize patterns and turn what they see into useful actions. Headwind puts this into play.</p><span class="core-label">Core competency</span></div>
           </li>
           <li>
             <span class="interest-number" aria-hidden="true">03</span>
-            <div><h3>Visual storytelling</h3><p>An interest in anime, visual novels, and telling stories through scenes and images.</p></div>
+            <div><h3>Game design &amp; development</h3><p>Exploring ideas, controls, and the details that make a game enjoyable to play.</p></div>
           </li>
           <li>
             <span class="interest-number" aria-hidden="true">04</span>
+            <div><h3>Visual storytelling</h3><p>An interest in anime, visual novels, and telling stories through scenes and images.</p></div>
+          </li>
+          <li>
+            <span class="interest-number" aria-hidden="true">05</span>
             <div><h3>Technology &amp; learning</h3><p>Trying new tools, asking questions, and taking creative projects one step at a time.</p></div>
           </li>
         </ul>
+      </section>
+
+      <section class="projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="projects-heading">
+          <div>
+            <p class="section-label"><span>03</span>Selected work</p>
+            <h2 id="projects-title">Ideas you can play with.</h2>
+          </div>
+          <p>A small game. A different way to interact.</p>
+        </div>
+
+        <article class="project" aria-labelledby="headwind-title">
+          <div class="project-bar"><span>01 / HEADWIND</span><span>AI MEETS PLAY</span></div>
+          <div class="project-main">
+            <div class="project-copy">
+              <p class="project-name">A head-controlled flying game</p>
+              <h3 id="headwind-title">Move your head.<br>Guide the bird.</h3>
+              <p class="project-description">Your webcam becomes the controller. A trained AI model reads your head position and guides a little bird between the pipes.</p>
+              <div class="project-actions">
+                <a class="play-link" href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer" aria-label="Play Headwind, opens in a new tab">Play Headwind <span aria-hidden="true">↗</span></a>
+                <a class="code-link" href="https://github.com/joel-wa/headwind" target="_blank" rel="noopener noreferrer" aria-label="View Headwind source code, opens in a new tab">View code</a>
+              </div>
+              <p class="project-hint">Opens in your browser · Keyboard controls work too</p>
+            </div>
+            <figure class="project-visual">
+              <a href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer" aria-label="Play Headwind, opens in a new tab">
+                <img src="assets/headwind-cover.jpg" alt="A little yellow bird flying toward an opening between green pipes, against a blue sky." width="1536" height="1024" loading="lazy" decoding="async">
+              </a>
+              <figcaption>Artwork inspired by the game. Open Headwind to play.</figcaption>
+            </figure>
+          </div>
+          <ul class="flight-controls" aria-label="Head controls">
+            <li><span class="flight-arrow" aria-hidden="true">↑</span><div><strong>Look up</strong><small>The bird rises</small></div></li>
+            <li><span class="flight-arrow" aria-hidden="true">→</span><div><strong>Look straight</strong><small>The bird stays level</small></div></li>
+            <li><span class="flight-arrow" aria-hidden="true">↓</span><div><strong>Look down</strong><small>The bird descends</small></div></li>
+          </ul>
+        </article>
+
+        <details class="project-details">
+          <summary>How to play &amp; how the AI works</summary>
+          <div class="details-grid">
+            <div>
+              <h4>Try it in three steps</h4>
+              <ol>
+                <li>Choose <strong>Play Headwind</strong> to open the game.</li>
+                <li>Choose <strong>Enable Camera + AI</strong> and allow camera access.</li>
+                <li>Click the game or press Space to start. Move your head to fly.</li>
+              </ol>
+              <p>You can also play without a camera: W or ↑ moves up, S or ↓ moves down.</p>
+            </div>
+            <div>
+              <h4>A trained model, a playful result</h4>
+              <p>Headwind uses a trained <strong>Teachable Machine pose model</strong> to recognize three head positions: up, straight, and down. The game turns each prediction into the bird's movement.</p>
+              <p>Camera images are processed in your browser. The camera starts only when you choose to enable it.</p>
+              <ul class="tech-list" aria-label="Headwind technologies"><li>Machine Learning</li><li>Teachable Machine</li><li>TensorFlow.js</li><li>p5.js</li></ul>
+            </div>
+          </div>
+        </details>
       </section>
     </main>
 

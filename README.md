@@ -1,8 +1,10 @@
 # Joel's personal introduction website
 
-A small website made with **HTML and CSS only**. Everything needed for the page is in `index.html`. No installation, JavaScript, frameworks, or build step is needed.
+A small website made with **HTML and CSS only**. The layout and styles are in `index.html`; the Headwind project illustration is in `assets/headwind-cover.jpg`. No installation, JavaScript, frameworks, or build step is needed.
 
-Joel introduces himself as a software developer and game designer, and a current master's student at KIC. The other interests are a suggested draft based on his creative interests; edit any text that does not feel right. No photo, email address, or location is included.
+Joel introduces himself as a software developer and game designer, and a current master's student at KIC. His core competencies are Software Development, followed by Machine Learning & AI. The Headwind showcase links to the real game and explains its head controls. The other interests are a suggested draft based on his creative interests; edit any text that does not feel right. No photo, email address, or location is included.
+
+The project cover is AI-generated artwork based on a real game screenshot. Its prompt and provenance are recorded in `assets/README.md`. The showcase uses a normal link to the game; it does not start a camera or embed a running game. The expandable explanation uses HTML `<details>` and works without JavaScript.
 
 ## 1. Open GitHub Codespaces
 

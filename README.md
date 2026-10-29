@@ -1,101 +1,102 @@
-# Joel's personal introduction website
+# Joel Assiakwa — A curious practice
 
-A small website made with **HTML and CSS only**. The layout and styles are in `index.html`; the Headwind project illustration is in `assets/headwind-cover.jpg`. No installation, JavaScript, frameworks, or build step is needed.
+A personal introduction, portfolio, and cooking/travel journal. Built with plain HTML, CSS, and small JavaScript modules. No framework, build step, or installation is required to view or publish it.
 
-Joel introduces himself as a software developer and game designer from Ghana, and a current master's student at KIC. His core competencies are Software Development, followed by Machine Learning & AI. The Headwind showcase links to the real game and explains its head controls. His passions include cooking, learning Japanese, and learning a new skill every few months.
+## Find your way around
 
-The travel journal includes India, Canada, Japan, the Netherlands, Angola, and the United Arab Emirates (Dubai). Ghana is shown as home. Japan currently lists Weathercock House, Kobe Port Tower, and BE KOBE. Matsumoto Castle is deliberately not listed as visited: Joel has not been there yet. No personal photos, email address, or exact personal address are included.
+The chapter index stays on the left on a computer and becomes a bottom navigation dock on a phone. It highlights the current chapter. The top-right Motion switch disables decorative movement. The site also respects your device's reduced-motion preference.
 
-The project cover is AI-generated artwork based on a real game screenshot. Its prompt and provenance are recorded in `assets/README.md`. The showcase uses a normal link to the game; it does not start a camera or embed a running game. The expandable explanation uses HTML `<details>` and works without JavaScript.
+The kitchen has a scroll-led horizontal photo journey on larger computers. Phones, smaller windows, and Motion off use a native swipe gallery with arrow buttons. Open a photo to see it full-size; **Show original** compares the AI-refined image with Joel's original shot. Escape closes the viewer. Keyboard arrows change photos.
 
-## 1. Open GitHub Codespaces
+## Hands-free experience
 
-1. Open this repository on GitHub.
-2. Click the green **Code** button.
-3. Select **Codespaces**.
-4. Click **Create codespace on main**. Wait for the editor to open.
+The entrance offers **Try hands-free** and **Use mouse or touch** as separate choices. You can reopen it with the Hands-free button.
 
-GitHub may show your Codespaces allowance before creation. Use the default small machine; this page needs very little computing power. Stop the Codespace when you finish: open the bottom-left menu, then select **Stop Current Codespace**, or stop it at https://github.com/codespaces.
+The center box stays open during camera permission and model loading, showing Camera → AI model → Ready. Setup can be cancelled at any stage. Once the model is ready, the center box transitions out and the small control panel takes over. Errors stay in the center during setup, with retry and normal-browsing choices.
 
-## 2. Preview the website
+- Camera access begins only after choosing Try hands-free.
+- Look straight briefly to get ready. Look down to scroll down; look up to scroll up; look straight to stop.
+- Turn off releases the camera. Hiding/leaving the page also releases it.
+- Camera frames are processed in the browser, never uploaded by this website. Audio is never requested.
+- The trained Teachable Machine pose model and TensorFlow download only after choosing hands-free. The same model is used by Headwind.
+- Low-confidence or missing-face predictions stop scrolling. A pose must persist before it can scroll. Old predictions expire. Mouse/touch/keyboard input briefly pauses head navigation; an open dialog stops it.
+- On a native swipe gallery, head navigation moves through the photos before continuing down the page.
+- Lighting and position affect the model. This is an experimental alternative, so standard navigation is always available. The model may need more training examples to work consistently for different visitors.
 
-1. In Codespaces, click **Terminal → New Terminal**.
-2. Type this command and press Enter:
+## 1. Open Codespaces
 
-```sh
+Open the repository on GitHub. Choose **Code → Codespaces → Create codespace on main**. Use the default small machine. Stop your Codespace when finished at https://github.com/codespaces.
+
+## 2. Preview
+
+In Codespaces choose **Terminal → New Terminal**, then run:
+
+~~~sh
 python3 -m http.server 8000
-```
+~~~
 
-3. Click **Open in Browser** in the message that appears.
-4. If you do not see the message, open the **Ports** tab near the terminal. Find port `8000` and click its browser icon. Keep this preview port private.
+Click **Open in Browser**. If the message is missing, use the browser icon beside port 8000 in the **Ports** tab. Keep the port private. Save files with Ctrl+S, then refresh. Ctrl+C stops the server. Use the HTTPS forwarded URL to try the camera.
 
-Keep the terminal running while you preview. After editing, save `index.html` with **Ctrl+S** (Mac: **Cmd+S**) and refresh the preview tab. Press **Ctrl+C** in the terminal to stop the preview server.
+## 3. Edit
 
-Python only serves the local preview. The published website uses HTML and CSS only.
+- `index.html`: your name, introduction, skills, work, and journal text.
+- `style.css`: colors, typography, layouts, responsive rules, and motion styles. Colors start in `:root`.
+- `experience.js`: persistent navigation, gallery, photo viewer, and entrance choices.
+- `head-scroll.js`: camera lifecycle and the head-scroll policy.
+- `assets/food/`: web images and the image-edit prompts. Original photos are in `assets/food/originals/`.
 
-## 3. Make a small change
+Software Development is followed by Machine Learning & AI as core competencies. Joel is a master's student at KIC and is from Ghana. Countries visited: India, Canada, Japan, the Netherlands, Angola, and the United Arab Emirates (Dubai). Japan's list includes Weathercock House, Kobe Port Tower, and BE KOBE. Matsumoto Castle is not listed as visited.
 
-Click `index.html` in the left file list. Look for the comments, such as `Edit your name and introduction here`. Change a sentence, save, and refresh the preview.
+The three dishes are described visually as egg-topped pasta, omelette & cereal, and noodles & chicken. Update these labels if Joel provides more specific dish names. Travel photos can be added when supplied; the page does not invent visit photographs or dates.
 
-The colors are near the top, inside `:root`. For example, `--red` sets the accent color.
+## 4. Commit and push
 
-## 4. Save your changes to GitHub
+A commit saves a version. Push uploads it to GitHub. Review changes in Source Control, or run:
 
-A **commit** saves a version of your files. **Push** uploads that version to GitHub.
-
-In the Codespaces terminal, run these commands one at a time:
-
-```sh
-git add index.html
-git commit -m "Update my introduction"
+~~~sh
+git add index.html style.css experience.js head-scroll.js assets
+git commit -m "Update my website"
 git push
-```
+~~~
 
-If you added a photo, use `git add index.html profile.jpg` for the first command. If Git says "nothing to commit", there are no new saved changes.
+Include any changed tests or documentation too. If Git says "nothing to commit", there are no new saved changes.
 
-You can also use the Source Control icon on the left: review changes, click **+** to stage them, enter a short message, select **Commit**, then **Sync Changes** or **Push**.
+## 5. GitHub Pages
 
-## 5. Publish with GitHub Pages
-
-1. Open the repository on GitHub (not the Codespaces editor).
-2. Click **Settings**.
-3. Click **Pages** in the left menu.
-4. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-5. Under **Branch**, choose **main** and **/(root)**.
-6. Click **Save** and wait for GitHub to finish publishing.
-7. Refresh the Pages settings. Click **Visit site** when it appears.
-
-For the `joel-introduction` repository on the `joel-wa` account, the website address is:
+The repository already publishes from **Settings → Pages → Deploy from a branch → main → /(root)**. Future pushes update the website after deployment:
 
 https://joel-wa.github.io/joel-introduction/
 
-This is the public website address. The private preview address from Codespaces is different. Future pushes to `main` update the public website after GitHub finishes deployment.
+Keep the lowercase `index.html` in the repository root. `.nojekyll` serves the static files directly. All local asset/module paths are relative, so they work beneath the repository URL. No server code is deployed.
 
-The file `index.html` is in the root folder. `.nojekyll` tells GitHub to serve these files without Jekyll processing. Links within the page use section anchors, so they work under the repository URL.
+## Check the camera logic
 
-## Optional: add a photo later
+Node is needed only for development checks, not to publish the site:
 
-1. In Codespaces, right-click an empty area in the left **Explorer** file list and choose **Upload**. Select your photo. You can also drag the file into the Explorer.
-2. Rename the uploaded file to `profile.jpg` (use a real JPG image; for PNG, use `profile.png` instead).
-3. In `index.html`, find `<h1 id="hello">`. Add this line immediately **above** that line:
+~~~sh
+npm test
+~~~
 
-```html
-<img class="profile-photo" src="profile.jpg" alt="Portrait of Joel Assiakwa" width="88" height="88">
-```
+Tests cover pose direction, confidence and neutral gating, permissions, duplicate starts, cancellation, late camera/model responses, video/model errors, stream cleanup, stale predictions, manual input, modals, and hidden pages. Browser QA also loaded the real TensorFlow/Teachable Machine model and ran it on synthetic video, confirming that no face causes no scrolling. These tests do not establish tracking accuracy for every human face or camera.
 
-4. Save, refresh the preview, then commit and push both files. If the image is PNG, change `src` to `profile.png`.
+## Design research and image provenance
 
-Use the exact filename, including capital letters. A relative path such as `profile.jpg` works with GitHub Pages. Choose a photo you are comfortable sharing publicly.
+Live project references studied for interaction principles:
 
-## If something does not work
+- https://hiyachu-tabeyo.studio.site/ — motion linked to the food's subject.
+- https://cockdoodoodoo.studio.site/ — clear navigation and a distinctive visual voice.
+- https://a-daily-life-like-scrolling.studio.site/ — a scroll-driven illustrated experience.
 
-- **The public site shows 404:** check that Pages uses `main` and `/(root)`, then wait for deployment to complete. Check the repository's **Actions** tab for a failed deployment.
-- **Your latest text is missing:** save the file, commit, push, wait for deployment, then refresh the page.
-- **A photo is missing:** check the filename, extension, and capital letters. Make sure the photo was committed and pushed.
-- **You only see the README:** confirm that the lowercase `index.html` file is in the repository root.
+The page uses its own layouts, images, and copy. No reference artwork or website source was copied.
 
-## GitHub's guides
+Food edits were made with the built-in ImageGen tool from Joel's three original photographs. Prompts and notes: `assets/food/README.md`. Headwind cover: `assets/README.md`. Food images are labelled as AI-refined, and the viewer retains an original-photo comparison.
 
-- [Create a Codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository)
-- [Commit and push in Codespaces](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-source-control-in-your-codespace)
-- [Configure GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+Technical reference: https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+
+## Troubleshooting
+
+- **404:** check Pages uses main and /(root), and check the Actions tab for a completed deployment.
+- **Old content:** save, commit, push, wait for deployment, then refresh.
+- **Missing image:** check the path and capital letters, and commit the image too.
+- **Camera blocked or busy:** use normal controls, or allow the camera in the address-bar settings and close other camera apps before retrying.
+- **Motion feels distracting:** choose Motion off. All chapters and photo controls remain available.

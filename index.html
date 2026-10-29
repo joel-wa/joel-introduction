@@ -1,467 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f2e9">
-  <meta name="description" content="Joel Assiakwa — software developer, Machine Learning &amp; AI, game designer, and master's student at KIC. From Ghana, curious about cooking, Japanese, and the world.">
-  <title>Joel Assiakwa — Software Developer &amp; Game Designer</title>
-  <style>
-    /* Change these colors to make the page your own. */
-    :root {
-      --paper: #f5f2e9;
-      --ink: #252c25;
-      --muted: #63675d;
-      --line: #d2d2c4;
-      --green: #303e31;
-      --red: #aa3d30;
-      --serif: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
-      --sans: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
-    a { color: inherit; text-underline-offset: 5px; }
-    a:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; }
-    ::selection { background: #ded8bc; color: var(--ink); }
-    .wrap { width: min(1120px, calc(100% - 96px)); margin-inline: auto; }
-    .skip-link { position: absolute; left: 24px; top: -100px; padding: 8px 16px; background: var(--ink); color: white; z-index: 2; }
-    .skip-link:focus { top: 16px; }
-    .header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 29px; border-bottom: 1px solid var(--line); }
-    .identity { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-    .monogram { display: grid; place-items: center; width: 39px; height: 39px; background: var(--red); color: var(--paper); font-family: var(--serif); font-size: 19px; }
-    .identity-name { font-size: 13px; font-weight: 600; letter-spacing: .025em; }
-    nav { display: flex; gap: 29px; font-size: 13px; }
-    nav a { text-decoration: none; }
-    nav a:hover { color: var(--red); }
-    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 70px; padding-block: 72px 76px; align-items: stretch; }
-    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(64px, 7.8vw, 106px); line-height: 1.04; letter-spacing: -.055em; margin: 32px 0 23px; }
-    h1 span { color: var(--red); }
-    .full-name { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 20px; }
-    .intro { max-width: 390px; color: var(--muted); font-size: 16px; margin: 0; }
-    .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 42px; background: var(--ink); color: var(--paper); padding: 12px 19px; text-decoration: none; font-size: 12px; margin-top: 30px; min-height: 46px; transition: background .2s; }
-    .button:hover { background: var(--red); }
-    .button span { font-size: 18px; line-height: 1; }
-    .note { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 475px; padding: 30px 34px; background: var(--green); color: var(--paper); }
-    .note-top { display: flex; justify-content: space-between; gap: 20px; font-size: 9px; letter-spacing: .15em; }
-    .japanese { margin: 33px 0 28px; font-family: var(--serif); font-size: clamp(44px, 5.1vw, 65px); line-height: 1.45; font-weight: 400; letter-spacing: .04em; }
-    .note-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; border-top: 1px solid #798174; padding-top: 17px; }
-    .translation { font-size: 11px; letter-spacing: .04em; margin: 0; }
-    .note-number { font-family: var(--serif); font-size: 36px; line-height: 1; color: #c6cdbd; }
-    .section { border-top: 1px solid var(--line); padding-block: 42px 48px; display: grid; grid-template-columns: 250px 1fr; gap: 45px; }
-    .section-label { margin: 1px 0 12px; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    .section-label span { color: var(--red); margin-right: 14px; }
-    h2 { margin: 0; font-family: var(--serif); font-size: 33px; line-height: 1.3; font-weight: 400; letter-spacing: -.025em; }
-    .about-copy { max-width: 650px; font-size: 17px; margin: 0; }
-    .about-copy + p { color: var(--muted); font-size: 14px; margin: 17px 0 0; max-width: 590px; }
-    .interests { list-style: none; padding: 0; margin: 0; }
-    .interests li { display: grid; grid-template-columns: 32px 1fr; gap: 13px; padding: 23px 0; border-bottom: 1px solid var(--line); }
-    .interests li:first-child { padding-top: 0; }
-    .interests li:last-child { padding-bottom: 0; border-bottom: 0; }
-    .interest-number { color: var(--red); font-family: var(--serif); font-size: 14px; padding-top: 3px; }
-    h3 { margin: 0 0 4px; font-size: 17px; font-weight: 500; }
-    .interests p { margin: 0; font-size: 13px; color: var(--muted); max-width: 540px; }
-    .footer { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 25px 35px; font-size: 11px; color: var(--muted); }
-    .footer p { margin: 0; }
-    .footer a { color: var(--ink); }
-    .role { font-weight: 600; color: var(--ink); }
-    .core-label { display: block; margin-top: 8px; color: var(--red); font-size: 9px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
-    .interests .core { padding-block: 24px; }
-    .interests .core:first-child { padding-top: 0; }
-    .core h3 { font-size: 22px; letter-spacing: -.025em; }
-    .core .interest-number { font-size: 18px; }
-    .projects-section { border-top: 1px solid var(--line); padding-block: 45px 65px; }
-    .projects-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 30px; }
-    .projects-heading h2 { font-size: clamp(34px, 4vw, 48px); }
-    .projects-heading > p { margin: 0 0 4px; font-size: 12px; color: var(--muted); max-width: 210px; }
-    .project { background: var(--green); color: var(--paper); }
-    .project-bar { display: flex; justify-content: space-between; gap: 20px; padding: 20px 30px; border-bottom: 1px solid #65705f; font-size: 10px; letter-spacing: .1em; }
-    .project-bar span:last-child { color: #d2d8c8; }
-    .project-main { display: grid; grid-template-columns: .95fr 1.15fr; }
-    .project-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 36px 30px 34px; }
-    .project-name { margin: 0 0 18px; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: #e6c59e; }
-    .project h3 { font-family: var(--serif); font-size: clamp(36px, 4.1vw, 52px); line-height: 1.12; font-weight: 400; letter-spacing: -.04em; margin-bottom: 22px; }
-    .project-description { margin: 0; max-width: 350px; font-size: 14px; line-height: 1.8; color: #e0e4d9; }
-    .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
-    .play-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 52px; padding: 13px 19px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
-    .play-link:hover { background: #e6c59e; }
-    .play-link span { font-size: 21px; font-weight: 400; }
-    .code-link { font-size: 12px; color: var(--paper); padding-block: 10px; }
-    .project-hint { font-size: 10px; color: #c9d1c2; margin: 12px 0 0; }
-    .project-visual { margin: 0; align-self: stretch; display: flex; flex-direction: column; background: #d5e8dd; min-width: 0; }
-    .project-visual a { display: block; flex: 1; overflow: hidden; position: relative; }
-    .project-visual img { display: block; width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; min-height: 390px; transition: transform .6s ease; }
-    .project-visual a:hover img { transform: scale(1.025); }
-    .project-visual figcaption { padding: 9px 16px; background: #e8eee3; color: #4c5b4a; font-size: 9px; letter-spacing: .04em; }
-    .flight-controls { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; border-top: 1px solid #65705f; }
-    .flight-controls li { display: flex; align-items: center; gap: 17px; padding: 24px 30px; border-right: 1px solid #65705f; }
-    .flight-controls li:last-child { border-right: 0; }
-    .flight-arrow { color: #e6c59e; font-family: var(--serif); font-size: 36px; line-height: 1; }
-    .flight-controls strong { display: block; font-size: 14px; font-weight: 500; }
-    .flight-controls small { display: block; color: #d1d8c9; font-size: 11px; margin-top: 2px; }
-    .project-details { border-top: 1px solid var(--line); margin-top: 16px; border-bottom: 1px solid var(--line); }
-    .project-details summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; font-size: 12px; font-weight: 600; }
-    .project-details summary::-webkit-details-marker { display: none; }
-    .project-details summary::after { content: "+"; color: var(--red); font-size: 20px; line-height: 1; }
-    .project-details[open] summary::after { content: "−"; }
-    .project-details summary:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
-    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; padding: 4px 0 27px; font-size: 13px; color: var(--muted); }
-    .details-grid h4 { color: var(--ink); font-size: 14px; font-weight: 600; margin: 0 0 12px; }
-    .details-grid ol { margin: 0; padding-left: 20px; }
-    .details-grid li { padding: 3px 0 5px 4px; }
-    .details-grid p { margin: 0 0 12px; }
-    .tech-list { display: flex; gap: 7px; flex-wrap: wrap; margin: 16px 0 0; padding: 0; list-style: none; }
-    .tech-list li { padding: 3px 9px; border: 1px solid var(--line); font-size: 10px; color: var(--ink); }
-    .personal-section { border-top: 1px solid var(--line); padding-block: 44px 64px; }
-    .section-intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 34px; margin-bottom: 30px; }
-    .section-intro h2 { font-size: clamp(34px, 4vw, 48px); }
-    .section-intro > p { max-width: 285px; margin: 0 0 3px; color: var(--muted); font-size: 13px; }
-    .passions-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; }
-    .kitchen, .passion-notes, .japanese-note, .curiosity-note, .japan-journal { min-width: 0; }
-    .kitchen { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 410px; background: #e9dfce; padding: 30px 34px; border-top: 3px solid var(--red); }
-    .personal-eyebrow { font-size: 9px; letter-spacing: .13em; text-transform: uppercase; font-weight: 600; margin: 0; }
-    .kitchen .personal-eyebrow { color: #854234; }
-    .kitchen h3 { font-family: var(--serif); font-size: clamp(45px, 5.8vw, 72px); line-height: 1.08; letter-spacing: -.045em; font-weight: 400; margin: 34px 0 20px; }
-    .kitchen-copy { max-width: 340px; font-size: 15px; color: #575347; margin: 0; }
-    .kitchen-footer { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 20px; border-top: 1px solid #c7baa5; margin-top: 34px; padding-top: 15px; font-size: 10px; color: #6a5a47; }
-    .kitchen-footer span[lang] { font-family: var(--serif); font-size: 19px; color: #854234; }
-    .passion-notes { display: grid; grid-template-rows: 1fr auto; gap: 20px; }
-    .japanese-note { padding: 26px 30px; border: 1px solid var(--line); }
-    .japanese-hello { display: block; font-family: var(--serif); font-size: clamp(30px, 3.5vw, 43px); color: var(--green); line-height: 1.5; margin: 15px 0; }
-    .japanese-note h3 { font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -.025em; margin: 0 0 8px; }
-    .japanese-note p:last-child { font-size: 13px; color: var(--muted); margin: 0; max-width: 340px; }
-    .curiosity-note { padding: 22px 30px; background: #e5e9dd; }
-    .curiosity-note h3 { font-family: var(--serif); font-size: 26px; line-height: 1.25; font-weight: 400; letter-spacing: -.02em; margin: 0 0 7px; }
-    .curiosity-note p { font-size: 12px; color: var(--muted); margin: 0; }
-    .travel-layout { display: grid; grid-template-columns: 290px 1fr; gap: 48px; }
-    .home-origin { border-top: 3px solid var(--red); padding: 19px 0 22px; }
-    .home-origin h3 { font-family: var(--serif); font-size: 42px; font-weight: 400; letter-spacing: -.035em; margin: 9px 0 0; }
-    .home-origin p:last-child { font-size: 12px; color: var(--muted); margin: 0; }
-    .country-label { font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin: 12px 0 4px; color: var(--muted); }
-    .country-list { list-style: none; margin: 0; padding: 0; }
-    .country-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-block: 11px; font-size: 13px; }
-    .country-list small { color: var(--muted); font-size: 10px; }
-    .country-list a { display: flex; align-items: center; justify-content: space-between; width: 100%; color: var(--red); text-decoration: none; }
-    .country-list a:hover { text-decoration: underline; }
-    .japan-journal { border: 1px solid var(--line); padding: 29px 30px 12px; }
-    .country-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 25px; }
-    .country-heading h3 { font-family: var(--serif); font-weight: 400; font-size: 57px; letter-spacing: -.045em; line-height: 1.15; margin: 10px 0 0; }
-    .country-kanji { font-family: var(--serif); font-size: 33px; color: var(--red); letter-spacing: .05em; padding-top: 15px; }
-    .place-list { list-style: none; padding: 0; margin: 0; counter-reset: places; }
-    .place-list li { counter-increment: places; display: grid; grid-template-columns: 29px 1fr; gap: 15px; padding-block: 23px; border-top: 1px solid var(--line); }
-    .place-list li::before { content: counter(places, decimal-leading-zero); font-size: 12px; font-family: var(--serif); color: var(--red); padding-top: 4px; }
-    .place-list h4 { font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.3; letter-spacing: -.02em; margin: 0 0 6px; }
-    .place-list p { margin: 0; color: var(--muted); font-size: 12px; }
-    /* Add Joel's real food and travel photos inside these sections when available. */
-    .memory-photo { display: block; width: 100%; height: auto; object-fit: cover; }
-    @media (max-width: 850px) {
-      .travel-layout { grid-template-columns: 220px 1fr; gap: 28px; }
-      .japan-journal { padding-inline: 24px; }
-      .kitchen { padding-inline: 27px; }
-      .japanese-note, .curiosity-note { padding-inline: 24px; }
-    }
-    @media (max-width: 620px) {
-      .header { flex-wrap: wrap; row-gap: 18px; }
-      .header nav { width: 100%; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
-      .section-intro { display: block; margin-bottom: 24px; }
-      .section-intro > p { margin-top: 16px; max-width: 360px; }
-      .passions-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-      .kitchen { min-height: 350px; padding: 25px; }
-      .kitchen h3 { font-size: clamp(40px, 12vw, 54px); margin-top: 27px; }
-      .passion-notes { gap: 16px; }
-      .japanese-note, .curiosity-note { padding: 24px; }
-      .japanese-hello { font-size: 35px; }
-      .travel-layout { grid-template-columns: 1fr; gap: 30px; }
-      .country-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
-      .country-list li { font-size: 12px; }
-      .country-list li:last-child { flex-wrap: wrap; gap: 0; }
-      .japan-journal { padding: 25px 22px 5px; }
-      .country-heading h3 { font-size: 50px; }
-      .place-list h4 { font-size: 25px; }
-      .personal-section { padding-block: 34px 42px; }
-    }
-    @media (max-width: 950px) {
-      .project-main { grid-template-columns: 1fr 1fr; }
-      .project-copy { padding: 28px 24px; }
-      .project-visual img { min-height: 380px; }
-      .flight-controls li { padding: 22px; gap: 12px; }
-    }
-    @media (max-width: 700px) {
-      .project-main { grid-template-columns: 1fr; }
-      .project-copy { padding: 25px; grid-row: 2; }
-      .project-visual { grid-row: 1; }
-      .project h3 { font-size: clamp(30px, 9.2vw, 38px); }
-      .project-name { font-size: 10px; margin-bottom: 14px; }
-      .project-description { max-width: 440px; }
-      .project-visual img { min-height: 0; height: auto; aspect-ratio: 3 / 2; }
-      .projects-heading { display: block; }
-      .projects-heading > p { margin-top: 14px; max-width: none; }
-      .flight-controls li { flex-direction: column; align-items: flex-start; gap: 12px; padding: 19px 14px; }
-      .flight-controls strong { font-size: 12px; }
-      .flight-controls small { font-size: 10px; }
-      .flight-arrow { font-size: 30px; }
-      .project-bar { padding: 18px 24px; font-size: 9px; }
-      .details-grid { grid-template-columns: 1fr; gap: 22px; }
-      .projects-section { padding-block: 34px 42px; }
-    }
-    /* Optional photo: add the image described in README.md. */
-    .profile-photo { width: 88px; height: 88px; object-fit: cover; border-radius: 50%; margin-top: 24px; }
-    @media (min-width: 1400px) { .hero { padding-top: 88px; } }
-    @media (max-width: 850px) {
-      .wrap { width: calc(100% - 56px); }
-      .hero { gap: 30px; padding-block: 52px; }
-      .note { min-height: 440px; padding: 25px; }
-      .section { grid-template-columns: 180px 1fr; gap: 30px; }
-      .identity-name { font-size: 12px; }
-    }
-    @media (max-width: 620px) {
-      .wrap { width: calc(100% - 40px); }
-      .header { padding-block: 20px; gap: 12px; }
-      .identity { gap: 9px; }
-      .identity-name { font-size: 11px; }
-      .monogram { width: 32px; height: 32px; font-size: 16px; }
-      nav { gap: 16px; font-size: 12px; }
-      .hero { grid-template-columns: 1fr; gap: 40px; padding-block: 42px; }
-      h1 { font-size: clamp(66px, 16vw, 92px); margin-top: 25px; }
-      .intro { max-width: 430px; }
-      .note { min-height: auto; padding: 25px 28px; }
-      .japanese { font-size: 46px; margin-block: 27px; }
-      .section { grid-template-columns: 1fr; gap: 26px; padding-block: 32px 38px; }
-      h2 { font-size: 31px; }
-      .about-copy { font-size: 16px; }
-      .footer { align-items: flex-start; font-size: 10px; }
-    }
-    @media (max-width: 360px) {
-      .identity-name { max-width: 80px; line-height: 1.4; }
-      nav { gap: 12px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .button, .play-link, .project-visual img { transition: none; }
-      .project-visual a:hover img { transform: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f1eee5">
+<meta name="description" content="Joel Assiakwa. Software development, Machine Learning & AI, game design, and a curious life. Master's student at KIC, from Ghana.">
+<title>Joel Assiakwa — A curious practice</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23ac402c'/%3E%3Ctext x='40' y='55' text-anchor='middle' font-family='serif' font-size='50' fill='%23f1eee5'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./experience.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap">
-    <header class="header" id="top">
-      <a class="identity" href="#top" aria-label="Joel Assiakwa, back to top">
-        <span class="monogram" aria-hidden="true">JA</span>
-        <span class="identity-name">Joel Assiakwa</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#interests">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#passions">Passions</a>
-        <a href="#travel">Travel</a>
-      </nav>
-    </header>
-
-    <main id="main">
-      <section class="hero" aria-labelledby="hello">
-        <div>
-          <p class="eyebrow"><span class="dot" aria-hidden="true"></span>A little introduction</p>
-          <!-- Edit your name and introduction here. -->
-          <h1 id="hello">Hello,<br>I'm <span>Joel.</span></h1>
-          <p class="full-name">Joel Assiakwa</p>
-          <p class="intro"><span class="role">Software developer &amp; game designer.</span><br>Machine Learning &amp; AI.<br>Currently a master&#39;s student at KIC.</p>
-          <a class="button" href="#projects">See my projects <span aria-hidden="true">↘</span></a>
-        </div>
-
-        <aside class="note" aria-label="Create. Learn. Enjoy.">
-          <div class="note-top"><span>PERSONAL NOTE</span><span lang="ja">はじめまして</span></div>
-          <p class="japanese" lang="ja">作る、<br>学ぶ、<br>楽しむ。</p>
-          <div class="note-bottom">
-            <p class="translation">Create. Learn. Enjoy.</p>
-            <span class="note-number" aria-hidden="true">01</span>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="section-label"><span>01</span>About me</p>
-          <h2 id="about-title">Always curious.</h2>
-        </div>
-        <div>
-          <!-- This is a first draft based on your interests. Change it anytime. -->
-          <p class="about-copy">I'm Joel Assiakwa, but you can call me Joel. I'm from Ghana and currently a master's student at KIC. I enjoy exploring how creative ideas become something you can see, play, or use.</p>
-          <p>Software development and Machine Learning &amp; AI are my core competencies. I bring these together with game design and visual storytelling to turn ideas into useful, playful experiences.</p>
-        </div>
-      </section>
-
-      <section class="section" id="interests" aria-labelledby="interests-title">
-        <div>
-          <p class="section-label"><span>02</span>Skills &amp; interests</p>
-          <h2 id="interests-title">What I do.</h2>
-        </div>
-        <!-- Add or change your hobbies in this list. -->
-        <ul class="interests">
-          <li class="core">
-            <span class="interest-number" aria-hidden="true">01</span>
-            <div><h3>Software Development</h3><p>I turn ideas into useful applications and solve problems with code.</p><span class="core-label">Core competency</span></div>
-          </li>
-          <li class="core">
-            <span class="interest-number" aria-hidden="true">02</span>
-            <div><h3>Machine Learning &amp; AI</h3><p>I work with trained models that recognize patterns and turn what they see into useful actions. Headwind puts this into play.</p><span class="core-label">Core competency</span></div>
-          </li>
-          <li>
-            <span class="interest-number" aria-hidden="true">03</span>
-            <div><h3>Game design &amp; development</h3><p>Exploring ideas, controls, and the details that make a game enjoyable to play.</p></div>
-          </li>
-          <li>
-            <span class="interest-number" aria-hidden="true">04</span>
-            <div><h3>Visual storytelling</h3><p>An interest in anime, visual novels, and telling stories through scenes and images.</p></div>
-          </li>
-          <li>
-            <span class="interest-number" aria-hidden="true">05</span>
-            <div><h3>Technology &amp; learning</h3><p>Trying new tools, asking questions, and taking creative projects one step at a time.</p></div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="projects-heading">
-          <div>
-            <p class="section-label"><span>03</span>Selected work</p>
-            <h2 id="projects-title">Ideas you can play with.</h2>
-          </div>
-          <p>A small game. A different way to interact.</p>
-        </div>
-
-        <article class="project" aria-labelledby="headwind-title">
-          <div class="project-bar"><span>01 / HEADWIND</span><span>AI MEETS PLAY</span></div>
-          <div class="project-main">
-            <div class="project-copy">
-              <p class="project-name">A head-controlled flying game</p>
-              <h3 id="headwind-title">Move your head.<br>Guide the bird.</h3>
-              <p class="project-description">Your webcam becomes the controller. A trained AI model reads your head position and guides a little bird between the pipes.</p>
-              <div class="project-actions">
-                <a class="play-link" href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer" aria-label="Play Headwind, opens in a new tab">Play Headwind <span aria-hidden="true">↗</span></a>
-                <a class="code-link" href="https://github.com/joel-wa/headwind" target="_blank" rel="noopener noreferrer" aria-label="View Headwind source code, opens in a new tab">View code</a>
-              </div>
-              <p class="project-hint">Opens in your browser · Keyboard controls work too</p>
-            </div>
-            <figure class="project-visual">
-              <a href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer" aria-label="Play Headwind, opens in a new tab">
-                <img src="assets/headwind-cover.jpg" alt="A little yellow bird flying toward an opening between green pipes, against a blue sky." width="1536" height="1024" loading="lazy" decoding="async">
-              </a>
-              <figcaption>Artwork inspired by the game. Open Headwind to play.</figcaption>
-            </figure>
-          </div>
-          <ul class="flight-controls" aria-label="Head controls">
-            <li><span class="flight-arrow" aria-hidden="true">↑</span><div><strong>Look up</strong><small>The bird rises</small></div></li>
-            <li><span class="flight-arrow" aria-hidden="true">→</span><div><strong>Look straight</strong><small>The bird stays level</small></div></li>
-            <li><span class="flight-arrow" aria-hidden="true">↓</span><div><strong>Look down</strong><small>The bird descends</small></div></li>
-          </ul>
-        </article>
-
-        <details class="project-details">
-          <summary>How to play &amp; how the AI works</summary>
-          <div class="details-grid">
-            <div>
-              <h4>Try it in three steps</h4>
-              <ol>
-                <li>Choose <strong>Play Headwind</strong> to open the game.</li>
-                <li>Choose <strong>Enable Camera + AI</strong> and allow camera access.</li>
-                <li>Click the game or press Space to start. Move your head to fly.</li>
-              </ol>
-              <p>You can also play without a camera: W or ↑ moves up, S or ↓ moves down.</p>
-            </div>
-            <div>
-              <h4>A trained model, a playful result</h4>
-              <p>Headwind uses a trained <strong>Teachable Machine pose model</strong> to recognize three head positions: up, straight, and down. The game turns each prediction into the bird's movement.</p>
-              <p>Camera images are processed in your browser. The camera starts only when you choose to enable it.</p>
-              <ul class="tech-list" aria-label="Headwind technologies"><li>Machine Learning</li><li>Teachable Machine</li><li>TensorFlow.js</li><li>p5.js</li></ul>
-            </div>
-          </div>
-        </details>
-      </section>
-      <section class="personal-section" id="passions" aria-labelledby="passions-title">
-        <div class="section-intro">
-          <div>
-            <p class="section-label"><span>04</span>Beyond the screen</p>
-            <h2 id="passions-title">Still learning. Always curious.</h2>
-          </div>
-          <p>I try to learn a new skill every few months. These are the things I'm exploring outside my work.</p>
-        </div>
-
-        <div class="passions-grid">
-          <article class="kitchen" aria-labelledby="cooking-title">
-            <p class="personal-eyebrow">01 / My newest skill</p>
-            <div>
-              <h3 id="cooking-title">Something<br>from scratch.</h3>
-              <p class="kitchen-copy"><strong>Cooking.</strong> A different kind of making, and the latest skill I'm learning.</p>
-            </div>
-            <div class="kitchen-footer"><span>Curiosity, in the kitchen.</span><span lang="ja" aria-label="Cooking in Japanese">料理</span></div>
-            <!-- Joel's own food photos can be added here, with the dish names. -->
-          </article>
-
-          <div class="passion-notes">
-            <article class="japanese-note" aria-labelledby="japanese-title">
-              <p class="personal-eyebrow">02 / A new language</p>
-              <span class="japanese-hello" lang="ja" aria-label="Hello in Japanese">こんにちは。</span>
-              <h3 id="japanese-title">Learning Japanese.</h3>
-              <p>Getting to know a language, and the world it opens up. One word, one conversation, one step at a time.</p>
-            </article>
-            <article class="curiosity-note" aria-labelledby="curiosity-title">
-              <h3 id="curiosity-title">Every few months,<br>something new.</h3>
-              <p>I like being a beginner again. There's always another skill to explore.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="personal-section" id="travel" aria-labelledby="travel-title">
-        <div class="section-intro">
-          <div>
-            <p class="section-label"><span>05</span>My travel journal</p>
-            <h2 id="travel-title">Places that stay with me.</h2>
-          </div>
-          <p>From Ghana to new corners of the world. Places I've been, and the little discoveries along the way.</p>
-        </div>
-
-        <div class="travel-layout">
-          <div>
-            <div class="home-origin">
-              <p class="personal-eyebrow">Where I'm from</p>
-              <h3>Ghana.</h3>
-              <p>Where my story begins.</p>
-            </div>
-            <p class="country-label">Countries I've visited</p>
-            <ul class="country-list" aria-label="Countries visited">
-              <li>India</li>
-              <li>Canada</li>
-              <li><a href="#japan">Japan <span aria-hidden="true">↘</span></a></li>
-              <li>The Netherlands</li>
-              <li>Angola</li>
-              <li><span>United Arab Emirates</span><small>Dubai</small></li>
-            </ul>
-          </div>
-
-          <article class="japan-journal" id="japan" aria-labelledby="japan-title">
-            <div class="country-heading">
-              <div><p class="personal-eyebrow">Places I've visited</p><h3 id="japan-title">Japan.</h3></div>
-              <span class="country-kanji" lang="ja" aria-label="Japan in Japanese">日本</span>
-            </div>
-            <ol class="place-list">
-              <li><div><h4>Weathercock House</h4><p>Kitano, Kobe <span lang="ja">· 風見鶏の館</span></p><!-- Add Joel's visit photo and caption here. --></div></li>
-              <li><div><h4>Kobe Port Tower</h4><p>The Kobe waterfront <span lang="ja">· 神戸ポートタワー</span></p><!-- Add Joel's visit photo and caption here. --></div></li>
-              <li><div><h4>BE KOBE</h4><p>Kobe <span lang="ja">· 神戸</span></p><!-- Add Joel's visit photo and caption here. --></div></li>
-            </ol>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© 2026 Joel Assiakwa<br>A small space for a curious mind.</p>
-      <a href="https://github.com/joel-wa">Find me on GitHub <span aria-hidden="true">↗</span></a>
-    </footer>
+<a class="skip-link" href="#main">Skip to content</a>
+<aside class="site-rail" aria-label="Site navigation">
+  <a class="brand" href="#about" aria-label="Joel Assiakwa, introduction"><span class="brand-seal" aria-hidden="true">J.</span><span>JOEL<br>ASSIAKWA</span></a>
+  <nav class="chapter-nav" aria-label="Page sections">
+    <a href="#about" aria-current="location"><span class="nav-no">01</span><span>About</span></a>
+    <a href="#interests"><span class="nav-no">02</span><span>Skills</span></a>
+    <a href="#projects"><span class="nav-no">03</span><span>Work</span></a>
+    <a href="#passions"><span class="nav-no">04</span><span>Life</span></a>
+    <a href="#travel"><span class="nav-no">05</span><span>Travel</span></a>
+  </nav>
+  <div class="rail-bottom"><span>A CURIOUS PRACTICE</span><a href="https://github.com/joel-wa" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+  <div class="reading-track" aria-hidden="true"><span></span></div>
+</aside>
+<div class="experience-tools">
+  <button id="motion-toggle" type="button" aria-pressed="false" title="Turn off decorative motion">Motion on</button>
+  <button id="head-control" type="button" aria-haspopup="dialog"><span aria-hidden="true">↕</span> Hands-free</button>
+</div>
+<main id="main" class="site-main">
+<section class="hero" id="about" data-chapter="about" aria-labelledby="hero-title">
+  <header class="folio"><span>JOEL ASSIAKWA</span><span>CODE, CURIOSITY & EVERYDAY LIFE</span></header>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="red-point" aria-hidden="true"></span>A little introduction</p>
+      <h1 id="hero-title">Curiosity,<br><em>in practice.</em></h1>
+      <p class="hero-name">Hello, I'm Joel.</p>
+      <p class="hero-roles">Software developer.<br>Machine Learning &amp; AI.<br>Game designer.</p>
+      <p class="hero-study">From Ghana. Currently a master's student at KIC.</p>
+      <a class="text-link" href="#projects">See something I've made <span aria-hidden="true">↘</span></a>
+    </div>
+    <div class="hero-collage">
+      <span class="vertical-note" lang="ja">好奇心のままに</span>
+      <figure class="hero-food"><img src="assets/food/noodles.jpg" alt="Joel's noodles and chicken, with the photo refined using AI." width="1120" height="1400" fetchpriority="high"><figcaption>A LITTLE OUTSIDE THE CODE</figcaption></figure>
+      <a class="hero-game" href="#projects" aria-label="Explore my Headwind game"><img src="assets/headwind-cover.jpg" alt="The yellow Headwind bird." width="1536" height="1024"><span>01 / MADE TO PLAY ↗</span></a>
+      <span class="create-seal" lang="ja" aria-label="Create">作</span>
+    </div>
   </div>
+  <div class="hero-bottom"><span>SOFTWARE. STORIES. SOMETHING FROM SCRATCH.</span><a href="#interests">Keep exploring <span aria-hidden="true">↓</span></a></div>
+</section>
+
+<section class="skills section-pad" id="interests" data-chapter="interests" aria-labelledby="skills-title">
+  <div class="skills-heading"><p class="eyebrow">02 / THE PRACTICE</p><h2 id="skills-title">Useful code.<br><em>Playful ideas.</em></h2><p>I'm Joel Assiakwa. I turn ideas into things you can use, play, and experience.</p><p>Software Development and Machine Learning &amp; AI are my core competencies.</p></div>
+  <div class="skill-stack">
+    <article class="skill-sheet"><span class="sheet-no">01</span><div><p class="eyebrow">CORE COMPETENCY</p><h3>Software<br>Development</h3><p>Useful applications. Real problems. Ideas made to work.</p></div><span class="sheet-mark" aria-hidden="true">↗</span></article>
+    <article class="skill-sheet ai-sheet"><span class="sheet-no">02</span><div><p class="eyebrow">CORE COMPETENCY</p><h3>Machine Learning<br>&amp; AI</h3><p>Trained models that recognize patterns and turn them into useful actions.</p></div><span class="sheet-mark" aria-hidden="true">↕</span></article>
+    <article class="skill-sheet game-sheet"><span class="sheet-no">03</span><div><p class="eyebrow">CREATIVE PRACTICE</p><h3>Game Design<br>&amp; Development</h3><p>Controls that feel natural. Visual stories. A reason to keep playing.</p></div><span class="sheet-mark" aria-hidden="true">↘</span></article>
+    <p class="skills-footnote">Also exploring visual storytelling, anime, visual novels, and new tools.</p>
+  </div>
+</section>
+
+<section class="work section-pad" id="projects" data-chapter="projects" aria-labelledby="work-title">
+  <div class="section-top"><p class="eyebrow">03 / SELECTED WORK</p><span>AI MEETS PLAY</span></div>
+  <div class="work-grid">
+    <div class="work-copy"><p class="eyebrow warm">HEADWIND / A BROWSER GAME</p><h2 id="work-title">Move your head.<br><em>Guide the bird.</em></h2><p>Your webcam becomes the controller. A trained AI model reads your head position and guides a little bird between the pipes.</p><a class="play-button" href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer">Play Headwind <span aria-hidden="true">↗</span></a><a class="work-code" href="https://github.com/joel-wa/headwind" target="_blank" rel="noopener noreferrer">View the code ↗</a></div>
+    <figure class="work-art"><a href="https://joel-wa.github.io/headwind/" target="_blank" rel="noopener noreferrer" aria-label="Play Headwind in a new tab"><img src="assets/headwind-cover.jpg" alt="A little yellow bird flying toward green pipes against a blue sky." width="1536" height="1024" loading="lazy"></a><figcaption>Artwork inspired by the game. Open Headwind to play.</figcaption></figure>
+  </div>
+  <ul class="flight-controls" aria-label="Headwind controls"><li><span aria-hidden="true">↑</span><div>Look up<small>The bird rises</small></div></li><li><span aria-hidden="true">→</span><div>Look straight<small>The bird stays level</small></div></li><li><span aria-hidden="true">↓</span><div>Look down<small>The bird descends</small></div></li></ul>
+  <details class="work-details"><summary>How to play &amp; how the AI works</summary><div class="work-details-grid"><div><h3>Try it in three steps</h3><ol><li>Open Headwind.</li><li>Choose <strong>Enable Camera + AI</strong> and allow the camera.</li><li>Click the game or press Space. Move your head to fly.</li></ol><p>No camera? W / ↑ moves up. S / ↓ moves down.</p></div><div><h3>A trained model, a playful result</h3><p>A Teachable Machine pose model recognizes up, straight, and down. TensorFlow.js runs the model in your browser; p5.js draws the game. Camera images stay in your browser.</p></div></div></details>
+</section>
+
+<section class="life section-pad" id="passions" data-chapter="passions" aria-labelledby="life-title">
+  <div class="life-kanji" lang="ja" aria-hidden="true">学ぶ</div>
+  <div class="life-copy"><p class="eyebrow">04 / BEYOND THE SCREEN</p><h2 id="life-title">Every few months,<br><em>a new beginning.</em></h2><p>I try to learn a new skill every few months. Cooking is the latest. I'm also learning Japanese.</p><div class="language-note"><span lang="ja">こんにちは。</span><span>A new language.<br>A new way to see things.</span></div><a class="text-link" href="#kitchen">Come into the kitchen <span aria-hidden="true">↘</span></a></div>
+</section>
+
+<section class="kitchen-scroll" id="kitchen" data-chapter="passions" aria-labelledby="kitchen-title">
+  <div class="kitchen-stage">
+    <div class="gallery-top"><p class="eyebrow">KITCHEN NOTES / COOKED BY JOEL</p><a href="#travel">To the travel journal ↓</a></div>
+    <div class="gallery-window" tabindex="0" role="region" aria-label="Cooking photo gallery. Use the photo buttons or swipe to browse.">
+      <div class="food-track">
+        <div class="gallery-intro"><span lang="ja" class="kitchen-jp">料理</span><h2 id="kitchen-title">At my<br><em>table.</em></h2><p>A different kind of making.<br>One dish at a time.</p><p class="gallery-instruction">Scroll to browse <span aria-hidden="true">→</span></p></div>
+        
+<figure class="dish " id="dish-1">
+  <a class="dish-frame photo-open" href="assets/food/pasta.jpg" data-food="0" aria-label="View egg-topped pasta photo">
+    <img src="assets/food/pasta.jpg" alt="Swirled golden omelette over tomato-sauce spaghetti on a beige plate." width="1120" height="1400" loading="lazy" decoding="async">
+    <span class="photo-zoom" aria-hidden="true">↗</span>
+  </a>
+  <figcaption><span class="dish-number">01</span><div><h3>Egg-topped pasta</h3><p>Cooked by Joel · Photo refined with AI</p></div></figcaption>
+</figure>
+
+<figure class="dish dish-wide" id="dish-2">
+  <a class="dish-frame photo-open" href="assets/food/breakfast.jpg" data-food="1" aria-label="View omelette & cereal photo">
+    <img src="assets/food/breakfast.jpg" alt="A folded omelette with a bowl of cereal and milk on a warm wooden table." width="1400" height="1050" loading="lazy" decoding="async">
+    <span class="photo-zoom" aria-hidden="true">↗</span>
+  </a>
+  <figcaption><span class="dish-number">02</span><div><h3>Omelette & cereal</h3><p>Cooked by Joel · Photo refined with AI</p></div></figcaption>
+</figure>
+
+<figure class="dish " id="dish-3">
+  <a class="dish-frame photo-open" href="assets/food/noodles.jpg" data-food="2" aria-label="View noodles & chicken photo">
+    <img src="assets/food/noodles.jpg" alt="Vegetable noodles with browned chicken in a handmade-looking beige bowl." width="1120" height="1400" loading="lazy" decoding="async">
+    <span class="photo-zoom" aria-hidden="true">↗</span>
+  </a>
+  <figcaption><span class="dish-number">03</span><div><h3>Noodles & chicken</h3><p>Cooked by Joel · Photo refined with AI</p></div></figcaption>
+</figure>
+      </div>
+    </div>
+    <div class="gallery-bottom"><p>Homemade food. A little trial, a little discovery.</p><div class="gallery-controls" aria-label="Photo navigation"><button type="button" class="photo-prev" aria-label="Previous food photo">←</button><span class="photo-counter" aria-live="off">01 / 03</span><button type="button" class="photo-next" aria-label="Next food photo">→</button></div></div>
+  </div>
+</section>
+
+<section class="travel section-pad" id="travel" data-chapter="travel" aria-labelledby="travel-title">
+  <div class="section-top"><p class="eyebrow">05 / PLACES & PERSPECTIVES</p><span lang="ja">旅の記録</span></div>
+  <h2 id="travel-title">A few places<br><em>along the way.</em></h2>
+  <div class="travel-grid">
+    <div class="home-note"><span class="home-seal" aria-hidden="true">GH</span><h3>Home is Ghana.</h3><p>Where my story begins.<br>The world keeps it growing.</p></div>
+    <div class="countries"><p class="eyebrow">COUNTRIES I'VE VISITED</p><ol class="country-list"><li><span>01</span><h3>India</h3></li><li><span>02</span><h3>Canada</h3></li><li class="japan-entry" id="japan"><span>03</span><div><h3>Japan <small lang="ja">日本</small></h3><p class="country-caption">A few places I've visited in Kobe.</p><ul class="place-list"><li>Weathercock House<small>Kitano · 風見鶏の館</small></li><li>Kobe Port Tower<small>The waterfront · 神戸ポートタワー</small></li><li>BE KOBE<small>Kobe · 神戸</small></li></ul></div></li><li><span>04</span><h3>The Netherlands</h3></li><li><span>05</span><h3>Angola</h3></li><li><span>06</span><div><h3>United Arab Emirates</h3><p class="country-caption">Dubai</p></div></li></ol></div>
+  </div>
+</section>
+<footer class="site-footer"><p>Keep making.<br><em>Keep wondering.</em></p><div><span>© 2026 JOEL ASSIAKWA</span><a href="https://github.com/joel-wa" target="_blank" rel="noopener noreferrer">Find me on GitHub ↗</a><a href="#about">Back to the beginning ↑</a></div></footer>
+</main>
+
+<dialog id="entrance" class="entrance" aria-labelledby="entrance-title">
+  <button class="dialog-close" type="button" data-close-entrance aria-label="Close introduction and use normal controls">×</button>
+  <p class="eyebrow">JOEL ASSIAKWA / A CURIOUS PRACTICE</p>
+  <h2 id="entrance-title">Look around.<br><em>Literally.</em></h2>
+  <p id="entrance-description">Explore with your head, or make yourself at home with your mouse, keyboard, or touch.</p>
+  <div class="head-directions"><div><span aria-hidden="true">↓</span>Look down<small>Scroll down</small></div><div><span aria-hidden="true">—</span>Look straight<small>Stop scrolling</small></div><div><span aria-hidden="true">↑</span>Look up<small>Scroll up</small></div></div>
+  <div id="setup-status" class="setup-status" hidden><span class="setup-symbol" aria-hidden="true"></span><div><strong id="setup-title">Getting ready</strong><p id="setup-message" role="status" aria-live="polite"></p></div></div>
+  <ol id="setup-steps" class="setup-steps" aria-label="Hands-free setup progress" hidden><li>Camera</li><li>AI model</li><li>Ready</li></ol>
+  <div class="entrance-actions"><button id="start-head" type="button" class="primary-button">Try hands-free <span aria-hidden="true">↕</span></button><button type="button" class="plain-button" data-close-entrance id="normal-entry">Use mouse or touch →</button></div>
+  <p class="privacy-note">Camera optional. Images are processed in this browser, not uploaded. The AI model downloads only when you choose hands-free.</p>
+</dialog>
+
+<section id="head-panel" class="head-panel" aria-labelledby="head-panel-title" hidden>
+  <div class="head-panel-top"><h2 id="head-panel-title">Hands-free scroll</h2><button type="button" id="stop-head">Turn off ×</button></div>
+  <div class="head-feedback"><span id="head-arrow" aria-hidden="true">—</span><p id="head-status" role="status" aria-live="polite">Look straight to get ready.</p></div>
+  <label class="head-speed">Scroll speed <select id="head-speed"><option value="160">Slow</option><option value="250" selected>Gentle</option><option value="380">Faster</option></select></label>
+  <p class="head-help">Face the camera in good light. Look straight to stop. Mouse, keyboard, and touch still work.</p>
+  <button id="retry-head" class="plain-button" type="button" hidden>Try the camera again ↗</button>
+</section>
+
+<dialog id="photo-dialog" class="photo-dialog" aria-labelledby="photo-title">
+  <div class="photo-dialog-top"><h2 id="photo-title">From my kitchen</h2><button id="close-photo" type="button" aria-label="Close photo">Close ×</button></div>
+  <img id="dialog-photo" src="assets/food/pasta.jpg" alt="Egg-topped pasta">
+  <div class="photo-dialog-bottom"><span id="photo-version">AI-refined photo</span><button id="toggle-original" type="button">Show original</button><div><button id="dialog-prev" type="button" aria-label="Previous photo">←</button><button id="dialog-next" type="button" aria-label="Next photo">→</button></div></div>
+</dialog>
+<noscript><p class="noscript-note">All sections, photos, and links work without JavaScript. Hands-free controls need JavaScript.</p></noscript>
 </body>
 </html>
